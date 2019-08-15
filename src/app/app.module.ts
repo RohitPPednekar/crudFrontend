@@ -11,7 +11,7 @@ import{AppRoutingModule}from'./app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {SharedConnection} from './sharedConnection';
 
 
 @NgModule({
@@ -35,7 +35,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
     // MatPaginatorModule,
     CategoryModule
   ],
-  providers: [],
+  providers: [SharedConnection],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
