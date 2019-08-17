@@ -39,13 +39,13 @@ export class AddDialogComponent {
   public confirmAdd(): void {
     //already added by 2 way data binding//this.dataService.Data = this.data;
     //TODO save in DB
-    this.sharedConnection.addCategory(this.dataService.Data).subscribe((categoryData) =>{
-      if(categoryData['status'] == 200){
-        if(categoryData['data'] != undefined){
-          //updating id only if any category new added
-          this.dataService.Data.id = categoryData['data'].id;
+    this.sharedConnection.addCategory(this.dataService.Data).subscribe((Data) =>{
+      if(Data['status'] == 200){
+        if(Data['data'] != undefined){
+          //updating id only if any Data new added
+          this.dataService.Data.id = Data['data'].id;
         }
-        this.dialogRef.close();
+        this.dialogRef.close("Done");
       }
       
     });

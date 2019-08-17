@@ -16,7 +16,7 @@ export class CategoryComponent implements OnInit {
   CategoryData=[];
   dataSource:any;
   Pages:number = 1;
-  displayedColumns: string[] = ['id', 'name','edit','delete','add'];
+  displayedColumns: string[] = ['id', 'name','edit','delete','productPage','add'];
 
   constructor(public httpClient: HttpClient,
     public dialog: MatDialog,
@@ -41,9 +41,10 @@ export class CategoryComponent implements OnInit {
 
   addCategory() {
     const dialogRef = this.dialog.open(AddDialogComponent,);
-
+    this.sharedData.Data.type = "Category";
     dialogRef.afterClosed().subscribe(result => {
       //TODO logic for showing only current page rows less than 10
+      if(this.sharedData.Data.name!=undefined && result!=undefined){
         var newRow = {id:0,name:''}
         newRow.id = this.sharedData.Data.id;
         newRow.name = this.sharedData.Data.name;
@@ -52,6 +53,7 @@ export class CategoryComponent implements OnInit {
         this.sharedData.Data.id = 0;
         this.sharedData.Data.name = "";
         console.log("this.sharedData.Data------------->"+JSON.stringify(this.sharedData.Data))
+      }  
     });
   }
 
@@ -60,15 +62,17 @@ export class CategoryComponent implements OnInit {
     
     this.sharedData.Data.id = id;
     this.sharedData.Data.name = name;
+    this.sharedData.Data.type = "Category";
     const dialogRef = this.dialog.open(AddDialogComponent,);
 
     dialogRef.afterClosed().subscribe(result => {
-          
+      if(this.sharedData.Data.name!=undefined && result!=undefined){    
         var editedNameIndex = this.CategoryData.findIndex((elems)=>elems.id == id);
         this.CategoryData[editedNameIndex].name = this.sharedData.Data.name;
         this.sharedData.Data.id = 0;
         this.sharedData.Data.name = "";
         console.log("this.sharedData.Data------------->"+JSON.stringify(this.sharedData.Data))
+      }  
     });
   }
 
@@ -84,6 +88,9 @@ export class CategoryComponent implements OnInit {
       }
     });   
     
+  }
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 }
 

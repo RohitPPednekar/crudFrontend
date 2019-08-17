@@ -18,9 +18,9 @@ export class SharedConnection {
         }    
     }
 
-    getProduct(params) {
+    getProduct(page,category_id) {
         try{ 
-            return this.httpClient.post(this.BaseUrl+"/getProducts",{pages : params});
+            return this.httpClient.post(this.BaseUrl+"/getProducts",{pages : page,category_id:category_id});
         }catch(error) {
            //return new Error("Network error, Please try after some time !");
         }    
@@ -28,7 +28,12 @@ export class SharedConnection {
 
     addCategory(params) {
         try{ 
-            return this.httpClient.post(this.BaseUrl+"/addCategory",{id : params.id,name : params.name});
+            if(params.type=="Category"){
+                return this.httpClient.post(this.BaseUrl+"/addCategory",{id : params.id,name : params.name});
+            }else if(params.type=="Product"){
+                return this.httpClient.post(this.BaseUrl+"/addProduct",{id : params.id,name : params.name,category_id : params.category_id});
+            }
+            
         }catch(error) {
            //return new Error("Network error, Please try after some time !");
         }    
@@ -37,6 +42,14 @@ export class SharedConnection {
     removeCategory(id) {
         try{ 
             return this.httpClient.post(this.BaseUrl+"/removeCategory",{id : id});
+        }catch(error) {
+           //return new Error("Network error, Please try after some time !");
+        }    
+    }
+
+    removeProduct(id) {
+        try{ 
+            return this.httpClient.post(this.BaseUrl+"/removeProducts",{id : id});
         }catch(error) {
            //return new Error("Network error, Please try after some time !");
         }    

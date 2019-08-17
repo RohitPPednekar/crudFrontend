@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { CategoryComponent } from './category.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 import {SharedData} from '../sharedData';
 import {
   MatButtonModule, MatDialogModule, MatIconModule, MatInputModule, MatPaginatorModule, MatSortModule,
@@ -25,6 +26,7 @@ import {AddDialogComponent} from '../dialogs/add/add.component';
     MatFormFieldModule,
     HttpClientModule,
     FormsModule,
+    RouterModule
   ],
   exports: [
     MatFormFieldModule,

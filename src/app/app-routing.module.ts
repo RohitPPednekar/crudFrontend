@@ -14,7 +14,7 @@ const routes: Routes = [
       component: CategoryComponent,
     },
     {
-      path: 'product',
+      path: 'product/:id',
       component: ProductComponent,
     },
   { path: '**', redirectTo: '' },

@@ -4,7 +4,9 @@ import { Injectable } from '@angular/core';
 export class SharedData {
    Data:any={
       id : 0,
-      name : ''
+      name : '',
+      category_id : 0,
+      type : ''
    };
    
 }
