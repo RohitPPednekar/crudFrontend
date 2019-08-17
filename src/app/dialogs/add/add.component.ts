@@ -2,6 +2,7 @@ import {MAT_DIALOG_DATA, MatDialogRef,MatError} from '@angular/material';
 import {Component, Inject} from '@angular/core';
 import {SharedData} from '../../sharedData';
 import {FormControl, Validators} from '@angular/forms';
+import {SharedConnection} from '../../sharedConnection';
 
 
 @Component({
@@ -12,7 +13,8 @@ import {FormControl, Validators} from '@angular/forms';
 
 export class AddDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
-              public dataService: SharedData) {
+              public dataService: SharedData,
+              public sharedConnection : SharedConnection) {
                   console.log("dataService------------->"+JSON.stringify(this.dataService.Data))
                }
 
@@ -37,5 +39,15 @@ export class AddDialogComponent {
   public confirmAdd(): void {
     //already added by 2 way data binding//this.dataService.Data = this.data;
     //TODO save in DB
+    this.sharedConnection.addCategory(this.dataService.Data).subscribe((categoryData) =>{
+      if(categoryData['status'] == 200){
+        if(categoryData['data'] != undefined){
+          //updating id only if any category new added
+          this.dataService.Data.id = categoryData['data'].id;
+        }
+        this.dialogRef.close();
+      }
+      
+    });
   }
 }

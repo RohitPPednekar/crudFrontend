@@ -18,7 +18,28 @@ export class SharedConnection {
         }    
     }
 
+    getProduct(params) {
+        try{ 
+            return this.httpClient.post(this.BaseUrl+"/getProducts",{pages : params});
+        }catch(error) {
+           //return new Error("Network error, Please try after some time !");
+        }    
+    }
 
+    addCategory(params) {
+        try{ 
+            return this.httpClient.post(this.BaseUrl+"/addCategory",{id : params.id,name : params.name});
+        }catch(error) {
+           //return new Error("Network error, Please try after some time !");
+        }    
+    }
 
+    removeCategory(id) {
+        try{ 
+            return this.httpClient.post(this.BaseUrl+"/removeCategory",{id : id});
+        }catch(error) {
+           //return new Error("Network error, Please try after some time !");
+        }    
+    }
 
 }
