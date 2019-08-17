@@ -67,9 +67,25 @@
     No results
   </div> -->
 
-  <mat-paginator #paginator
+  <ng-container >
+      <span > 
+          <button mat-icon-button color="primary" (click)="nextPagination()">
+              <mat-icon aria-label="Example icon-button with a heart icon">Next</mat-icon>
+            </button>  
+          </span>
+  </ng-container>
+
+  <ng-container >
+      <span > 
+          <button mat-icon-button color="primary" (click)="prevPagination()">
+              <mat-icon aria-label="Example icon-button with a heart icon">Prev</mat-icon>
+            </button>  
+          </span>
+  </ng-container>
+
+  <!-- <mat-paginator #paginator
                  [length]="10"
                  [pageIndex]="10"
                  [pageSize]="10"
                  [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator>
+  </mat-paginator> -->

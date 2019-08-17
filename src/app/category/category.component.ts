@@ -39,6 +39,16 @@ export class CategoryComponent implements OnInit {
     });
   }
 
+  nextPagination(){
+    this.Pages +=1; 
+    this.getCategory(this.Pages)
+  }
+
+  prevPagination(){
+    this.Pages -=1; 
+    this.getCategory(this.Pages)
+  }
+
   addCategory() {
     const dialogRef = this.dialog.open(AddDialogComponent,);
     this.sharedData.Data.type = "Category";
@@ -71,7 +81,7 @@ export class CategoryComponent implements OnInit {
         this.CategoryData[editedNameIndex].name = this.sharedData.Data.name;
         this.sharedData.Data.id = 0;
         this.sharedData.Data.name = "";
-        console.log("this.sharedData.Data------------->"+JSON.stringify(this.sharedData.Data))
+        
       }  
     });
   }
