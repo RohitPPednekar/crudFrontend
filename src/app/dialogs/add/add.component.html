@@ -1,11 +1,11 @@
 <div class="container">
-    <h3 mat-dialog-title>Add new Category</h3>
+    <h3 mat-dialog-title>Add new {{ dataService.Data.type }}</h3>
   
     <form class="mat-dialog-content" (ngSubmit)="submit" #formControl="ngForm">
   
       <div class="form">
         <mat-form-field color="accent">
-          <input matInput #input class="form-control" [(ngModel)]="dataService.Data.name" placeholder="Title"  name="Name" required />
+          <input matInput #input class="form-control" [(ngModel)]="dataService.Data.name" placeholder="Name"  name="Name" required />
           <mat-error *ngIf="formControl.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
       </div>

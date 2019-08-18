@@ -30,7 +30,7 @@ export class ProductComponent implements OnInit {
 
   ngOnInit() {
     this.category_id = +this.route.snapshot.paramMap.get("id");
-    
+    this.Category_Name = this.sharedData.Data.category_name;
     this.getProduct(this.Pages,this.category_id);
 
   }
@@ -103,5 +103,14 @@ export class ProductComponent implements OnInit {
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
+  }
+  nextPagination(){
+    this.Pages +=1; 
+    this.getProduct(this.Pages,this.category_id)
+  }
+
+  prevPagination(){
+    this.Pages -=1; 
+    this.getProduct(this.Pages,this.category_id)
   }
 }

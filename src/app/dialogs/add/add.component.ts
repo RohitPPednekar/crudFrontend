@@ -15,7 +15,7 @@ export class AddDialogComponent {
   constructor(public dialogRef: MatDialogRef<AddDialogComponent>,
               public dataService: SharedData,
               public sharedConnection : SharedConnection) {
-                  console.log("dataService------------->"+JSON.stringify(this.dataService.Data))
+                  
                }
 
   formControl = new FormControl('', [

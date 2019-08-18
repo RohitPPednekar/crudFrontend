@@ -6,7 +6,8 @@ export class SharedData {
       id : 0,
       name : '',
       category_id : 0,
-      type : ''
+      type : '',
+      category_name:''
    };
    
 }

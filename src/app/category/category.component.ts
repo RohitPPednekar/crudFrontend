@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {MatDialog, MatPaginator, MatSort} from '@angular/material';
 import {HttpClient} from '@angular/common/http';
 import {MatTableDataSource} from '@angular/material/table';
@@ -22,6 +23,7 @@ export class CategoryComponent implements OnInit {
     public dialog: MatDialog,
     public sharedConnection : SharedConnection,
     public sharedData : SharedData,
+    public route : Router
     ) { }
 
   ngOnInit() {
@@ -49,6 +51,11 @@ export class CategoryComponent implements OnInit {
     this.getCategory(this.Pages)
   }
 
+  navigateProduct(category_id,category_name){
+    this.sharedData.Data.category_name = category_name;
+    this.route.navigate(['/product',category_id]);
+  }
+
   addCategory() {
     const dialogRef = this.dialog.open(AddDialogComponent,);
     this.sharedData.Data.type = "Category";
@@ -62,7 +69,7 @@ export class CategoryComponent implements OnInit {
         this.dataSource = new MatTableDataSource(this.CategoryData);
         this.sharedData.Data.id = 0;
         this.sharedData.Data.name = "";
-        console.log("this.sharedData.Data------------->"+JSON.stringify(this.sharedData.Data))
+        
       }  
     });
   }

@@ -1,5 +1,5 @@
 <mat-toolbar color="primary">
-    <span>Product CRUD Operation</span>
+    <span>Category as {{ Category_Name }}'s Product CRUD Operation :-</span>
   </mat-toolbar>
   
     <mat-form-field>
@@ -50,9 +50,9 @@
   
       <ng-container matColumnDef="add">
           <th mat-header-cell *matHeaderCellDef> 
-              <button mat-icon-button color="primary" (click)="addProduct()">
-                  <mat-icon aria-label="Example icon-button with a heart icon">add</mat-icon>
-                </button>  
+              <button mat-stroked-button color="primary" (click)="addProduct()">
+                  Add
+              </button>
           </th>
           <span mat-cell *matCellDef="let row; let i=index;"></span>
       </ng-container>
@@ -62,15 +62,17 @@
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
   
-  
-    <!-- <div class="no-results" [style.display]="dataSource.renderedData.length == 0 ? '' : 'none'">
-      No results
-    </div> -->
-  
-    <mat-paginator #paginator
-                   [length]="10"
-                   [pageIndex]="10"
-                   [pageSize]="10"
-                   [pageSizeOptions]="[5, 10, 25, 100]">
-    </mat-paginator>
-  
+    <div layout-align="end center" class="no-results" [style.display]="CategoryData.length == 0 ? '' : 'none'">
+        No results
+      </div>
+    
+      <ng-container >
+        <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+          <button [disabled]="CategoryData.length < 10" (click)="nextPagination()" mat-stroked-button class="md-warn" style="position: absolute;left:50%;">
+              Next
+          </button>
+          <button [disabled]="Pages == 1" (click)="prevPagination()" mat-stroked-button class="md-warn" style="position: absolute;right:50%;">
+              Prev
+          </button>
+        </section>
+      </ng-container>
