@@ -68,24 +68,12 @@
   </div> -->
 
   <ng-container >
-      <span > 
-          <button mat-icon-button color="primary" (click)="nextPagination()">
-              <mat-icon aria-label="Example icon-button with a heart icon">Next</mat-icon>
-            </button>  
-          </span>
+    <section layout="row" layout-sm="column" layout-align="end center" layout-wrap>
+      <button [disabled]="CategoryData.length < 10" (click)="nextPagination()" mat-stroked-button class="md-warn" style="position: absolute;left:50%;">
+          Next
+      </button>
+      <button [disabled]="Pages == 1" (click)="prevPagination()" mat-stroked-button class="md-warn" style="position: absolute;right:50%;">
+          Prev
+      </button>
+    </section>
   </ng-container>
-
-  <ng-container >
-      <span > 
-          <button mat-icon-button color="primary" (click)="prevPagination()">
-              <mat-icon aria-label="Example icon-button with a heart icon">Prev</mat-icon>
-            </button>  
-          </span>
-  </ng-container>
-
-  <!-- <mat-paginator #paginator
-                 [length]="10"
-                 [pageIndex]="10"
-                 [pageSize]="10"
-                 [pageSizeOptions]="[5, 10, 25, 100]">
-  </mat-paginator> -->
