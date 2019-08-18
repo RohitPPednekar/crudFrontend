@@ -10,5 +10,5 @@ To run the project follow steps:-
 
 1. Download the clone of this repository,
 2. Install all the node packages by command "npm install",
-3. Run the project by executing file app.js in project's parent directory by "ng serve",
+3. Run the project by executing command in project's parent directory by "ng serve",
 4. Go on browser and type http://localhost:4200 
